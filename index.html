@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<title> Speakers, by Dr T </title>
+		
+		<style> canvas {width:100%, height: 100%} </style>
+		
+		<script src="js/three.js"></script>
+		<script src="js/jquery.js"></script>
+		
+		<script src="js/CopyShader.js"></script>
+		<script src="js/EffectComposer.js"></script>
+		<script src="js/MaskPass.js"></script>
+		<script src="js/RenderPass.js"></script>
+		<script src="js/ShaderPass.js"></script>
+		
+		<script src="js/utility.js"></script> 
+		
+		<audio id='Level1' src="levels/AProperStory.mp3"></audio>
+		<audio id='Level2' src="levels/DANCE.mp3"></audio>
+		<audio id='Level3' src="levels/Default.mp3"></audio>
+		
+		<script src="classes/Beat.js"></script>
+		<script src="classes/Speakers.js"></script>
+		<script src="classes/Game.js"></script>
+		
+	</head>
+	
+	<body>
+		
+		
+		
+		<script>
+			var game = new Game();
+		
+			function start(t){
+				var that = game;
+				var loop = function() {
+    				that.render(that.getCurrentBeat());
+    				requestAnimationFrame(loop, that.renderer.domElement);
+  				};
+  				loop(); 
+  				
+				
+			}
+		
+			var t = new Date().getTime();
+		
+		
+			game.init();
+			start(t);
+			
+		</script>
+		
+		<canvas id="myCanvas" width="200" height="600" style="border:1px solid #000000;">
+			</canvas>
+		
+		<script>
+			c = document.getElementById("myCanvas");
+      		
+      		controls = c.getContext("2d");
+      		controls.font = "30px Arial";
+      		controls.fillText("Controls:",10,40);
+      		
+      		movement = c.getContext("2d");
+      		movement.font = "20px Arial";
+      		movement.fillText("Space",10,65);
+      		
+      		instructions5 =  c.getContext("2d");
+      		instructions5.font = "20px Arial";
+      		instructions5.fillText("=>: next Level", 10, 90);
+      		      		
+      		goal =  c.getContext("2d");
+      		goal.font = "30px Arial";
+      		goal.fillText("How to play:", 10, 200);
+      		
+      		instructions1 =  c.getContext("2d");
+      		instructions1.font = "20px Arial";
+      		instructions1.fillText("Press space to start", 10, 225);
+      		instructions2 =  c.getContext("2d");
+      		instructions2.font = "20px Arial";
+      		instructions2.fillText("playing the track.", 10, 250);
+      		instructions3 =  c.getContext("2d");
+      		instructions3.font = "20px Arial";
+      		instructions3.fillText("Then press space in", 10, 275);
+      		instructions4 =  c.getContext("2d");
+      		instructions4.font = "20px Arial";
+      		instructions4.fillText("time with the beat.", 10, 300);
+      		instructions6 =  c.getContext("2d");
+      		instructions6.font = "20px Arial";
+      		instructions6.fillText("When prompted, use", 10, 325);
+      		instructions7 =  c.getContext("2d");
+      		instructions7.font = "20px Arial";
+      		instructions7.fillText("=> to progress levels.", 10, 350);
+      		
+      		
+		</script>
+		
+		
+	</body>
+	
+</html>
